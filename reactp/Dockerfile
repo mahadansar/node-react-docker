@@ -17,7 +17,7 @@ RUN yarn build
 
 FROM nginx:stable-alpine
 
-COPY --from=build-stage /app/build/ /var/www/mdu/
+COPY --from=build-stage /app/build/ /var/www/test/
 COPY --from=build-stage /app/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

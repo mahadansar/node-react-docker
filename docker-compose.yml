@@ -5,7 +5,7 @@ services:
     build:
       context: ./reactp
       dockerfile: ./Dockerfile
-    image: "mdu/reactp"
+    image: "test/reactp"
     networks:
       my-network-name:
         aliases:
@@ -15,7 +15,7 @@ services:
     build:
       context: ./nodep
       dockerfile: ./Dockerfile
-    image: "mdu/nodep"
+    image: "test/nodep"
     networks:
       my-network-name:
         aliases:
@@ -27,7 +27,7 @@ services:
     build:
       context: ./nginx
       dockerfile: ./Dockerfile
-    image: "mdu/nginx"
+    image: "test/nginx"
     networks:
       my-network-name:
         aliases:
