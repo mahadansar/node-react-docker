@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let data = await axios.get("http://localhost:4000/");
+      let data = await axios.get("http://localhost/api/");
       setText(data.data.msg);
     }
     fetchData();
