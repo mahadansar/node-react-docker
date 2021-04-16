@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 const port = 4000;
 
-app.get("/", async (req, res) => {
+app.get("/t", async (req, res) => {
   try {
     res.status(200).send({ msg: "WELCOME TO NODEJS" });
   } catch (e) {

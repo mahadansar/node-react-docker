@@ -6,9 +6,11 @@ LABEL maintainer = ["test1@test.com", "test2@test.com"]
 
 WORKDIR /app
 
-COPY ./ /app/
+COPY package*.json /app/
 
 RUN yarn install
+
+COPY ./ /app/
 
 RUN yarn build
 
