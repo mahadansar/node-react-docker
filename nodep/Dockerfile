@@ -1,8 +1,17 @@
 FROM node:14
-WORKDIR /
-ENV PATH /node_modules/.bin:$PATH
-COPY package*.json ./
-RUN npm install
-COPY . ./
+
+LABEL version="1.0"
+LABEL description="NodeJS Backend"
+LABEL maintainer = ["test1@test.com", "test2@test.com"]
+
+WORKDIR /app
+
+COPY ["package.json", "package-lock.json", "./"]
+
+RUN npm install --production
+
+COPY . .
+
 EXPOSE 4000
-CMD [ "node", "server.js" ]
+
+CMD ["npm", "start"]
