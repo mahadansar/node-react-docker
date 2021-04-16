@@ -1,0 +1,20 @@
+version: "1"
+
+services:
+  backend:
+    env_file: ".env"
+    build:
+      context: ./nodep
+      dockerfile: ./Dockerfile
+    image: "mdu/nodejs-backend"
+    ports:
+      - "4000:4000"
+  frontend:
+    build:
+      context: ./reactp
+      dockerfile: ./Dockerfile
+    image: "mdu/reactjs-frontend"
+    ports:
+      - "80:80"
+    links:
+      - "backend:api"
