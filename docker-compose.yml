@@ -2,14 +2,14 @@ version: "3.5"
 
 services:
   frontend:
-    networks:
-      my-network-name:
-        aliases:
-          - mdu-react
     build:
       context: ./reactp
       dockerfile: ./Dockerfile
     image: "mdu/reactp"
+    networks:
+      my-network-name:
+        aliases:
+          - frontend
   backend:
     env_file: ".env"
     build:
@@ -19,7 +19,7 @@ services:
     networks:
       my-network-name:
         aliases:
-          - mdu-backend
+          - backend
   nginx-proxy:
     depends_on:
       - frontend
