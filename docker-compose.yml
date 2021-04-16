@@ -10,8 +10,6 @@ services:
       context: ./reactp
       dockerfile: ./Dockerfile
     image: "mdu/reactp"
-    ports:
-      - "80:80"
   backend:
     env_file: ".env"
     build:
@@ -22,10 +20,9 @@ services:
       my-network-name:
         aliases:
           - mdu-backend
-    ports:
-      - "4000:4000"
   nginx-proxy:
     depends_on:
+      - frontend
       - backend
     build:
       context: ./nginx
