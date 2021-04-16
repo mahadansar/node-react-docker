@@ -1,4 +1,4 @@
-version: "1"
+version: "3"
 
 services:
   backend:
@@ -6,14 +6,14 @@ services:
     build:
       context: ./nodep
       dockerfile: ./Dockerfile
-    image: "mdu/nodejs-backend"
+    image: "mdu/nodep"
     ports:
       - "4000:4000"
   frontend:
     build:
       context: ./reactp
       dockerfile: ./Dockerfile
-    image: "mdu/reactjs-frontend"
+    image: "mdu/reactp"
     ports:
       - "80:80"
     links:

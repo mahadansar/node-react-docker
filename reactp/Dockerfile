@@ -1,4 +1,4 @@
-FROM node:10.1 as build-step
+FROM node:14 as build-step
 WORKDIR /
 ENV PATH /node_modules/.bin:$PATH
 COPY package.json ./
