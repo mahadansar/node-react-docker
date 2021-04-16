@@ -15,7 +15,6 @@ COPY ./ /app/
 RUN yarn build
 
 
-
 FROM nginx:stable-alpine
 
 COPY --from=build-stage /app/build/ /var/www/mdu/
