@@ -6,11 +6,9 @@ LABEL maintainer = ["test1@test.com", "test2@test.com"]
 
 WORKDIR /app
 
-COPY package*.json /app/
+COPY ./ /app/
 
 RUN yarn install
-
-COPY ./ /app/
 
 RUN yarn build
 
@@ -18,7 +16,7 @@ RUN yarn build
 FROM nginx:stable-alpine
 
 COPY --from=build-stage /app/build/ /var/www/mdu/
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /app/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
