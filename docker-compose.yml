@@ -5,17 +5,19 @@ services:
     build:
       context: ./reactp
       dockerfile: ./Dockerfile
-    image: "test/reactp"
+    image: "img/reactp"
     networks:
       my-network-name:
         aliases:
           - frontend
   backend:
+    # depends_on:
+    #   - mysql-database
     env_file: ".env"
     build:
       context: ./nodep
       dockerfile: ./Dockerfile
-    image: "test/nodep"
+    image: "img/nodep"
     networks:
       my-network-name:
         aliases:
@@ -27,12 +29,25 @@ services:
     build:
       context: ./nginx
       dockerfile: ./Dockerfile
-    image: "test/nginx"
+    image: "img/nginx"
     networks:
       my-network-name:
         aliases:
           - proxy-name
     ports:
       - 80:80
+  # mysql-database:
+  #   image: mysql
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   environment:
+  #     MYSQL_DATABASE: "root"
+  #     MYSQL_ROOT_PASSWORD: "secret"
+  #   ports:
+  #     - "3306:3306"
+  #   networks:
+  #     my-network-name:
+  #       aliases:
+  #         - mysql-name
 networks:
   my-network-name:
